@@ -17,13 +17,17 @@ class ViewController: UIViewController {
 
     @IBAction func showMessage(sender: UIButton) {
         let selectedEmotion = sender.titleLabel!.text!
-        let alertController = UIAlertController(title: "Alert", message: emojis[selectedEmotion], preferredStyle: UIAlertController.Style.alert)
+        let emojiMessage = customMessages[emojis[selectedEmotion]!]![Int.random(in: 0...1)]
+        let alertController = UIAlertController(title: "Alert", message: emojiMessage, preferredStyle: UIAlertController.Style.alert)
+        //let randomMessage = customMessages.randomElement()
         
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
 
     let emojis = ["😢": "sad", "😊": "happy"]
+    
+    let customMessages = ["sad" : ["take a deep breath!", "it'll be okay!"], "happy" : ["that's awesome!", "that's great!"]]
     
 }
 
